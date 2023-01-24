@@ -15,6 +15,7 @@
         public function getDuration() {
 
             return $this -> hours . " : " . $this -> minutes;
+
         }
     }
 
@@ -32,7 +33,7 @@
 
         public function getActor() {
 
-            return $this -> name . " " . $this -> surname . " ";
+            return $this -> name . " " . $this -> surname;
         }
 
     }
@@ -66,20 +67,22 @@
 
             $actorStr = "";
             foreach ($this -> cast as $actors) {
-    
-                $actorStr .= $actors -> getActor();
+                
+                $actorStr .= $actors -> getActor() . " ";
+                
             }
             return $actorStr;
         }
 
         public function getHtml() {
 
-            return "Title: " . $this -> title
-            . "<br>plot: " . $this -> plot
-            . "<br>duration: " . $this -> duration -> getDuration()
-            . "<br>direction: " . $this -> direction
-            . "<br>screenplay: " . $this -> screenplay
-            . "<br>cast: " . $this -> getCast();
+            return "Titolo: " . $this -> title
+            . "<br>Trama: " . $this -> plot
+            . "<br>Durata: " . $this -> duration -> getDuration()
+            . "<br>Regia: " . $this -> direction
+            . "<br>Sceneggiatura: " . $this -> screenplay
+            . "<br>Cast: " . $this -> getCast();
+
         }
 
     }
@@ -87,23 +90,34 @@
 
     $duration1 = new Duration("1","57");
     $duration2 = new Duration("2","23");
+    $duration3 = new Duration("1","55");
 
     $actor1 = new Actor("Brad", "Pitt");
     $actor2 = new Actor("Shia", "LaBeouf");
     $actor3 = new Actor("Logan", "Lerman");
     $actor4 = new Actor("Daniel", "Craig");
     $actor5 = new Actor("Paul", "Nicholls");
+    $actor6 = new Actor("Sosie", "Bacon");
+    $actor7 = new Actor("Kyle", "Gallner");
+    $actor8 = new Actor("Caitlin", "Stasey");
 
     $actors1 = [$actor1, $actor2, $actor3];
     $actors2 = [$actor4, $actor5];
+    $actors3 = [$actor6, $actor7, $actor8];
 
     $movie1 = new Movie("Fury", "Un comandante di carri armati deve prendere decisioni difficili quando lui e il suo equipaggio combattono in Germania nell'aprile del 1945.", $duration1, "David Ayer", "David Ayer", $actors1);
 
     $movie2 = new Movie("The Trench", "Narra le 48 ore precedenti la catastrofica battaglia della Somme avvenuta nel luglio del 1916. Quella della Somme fu una delle più grandi battaglie della prima guerra mondiale, con più di un milione fra morti, feriti e dispersi. Gli eserciti britannico e francese tentarono di spezzare le linee tedesche lungo un fronte di 40 chilometri a nord e a sud del fiume Somme nella Francia settentrionale.", $duration2, "William Boyd", "William Boyd", $actors2);
 
+    $movie3 = new Movie("Smile", "In un reparto psichiatrico, la psichiatra Dr. Rose Cotter incontra una paziente ricoverata di recente, Laura Weaver, una studentessa di dottorato che ha assistito al suicidio del suo professore, e che afferma di essere l'unica a vedere un'entità che finge di essere altre persone che le sorridono. D'un tratto, Laura ha un attacco di panico e le convulsioni, e mentre Rose chiede aiuto, Laura le sorride prima di tagliarsi la gola con un frammento di un vaso rotto.", $duration3, "Parker Finn", "Francesco Franceschini", $actors3);
 
-    echo $movie1 -> getHtml();
-    echo "<br><br>";
-    echo $movie2 -> getHtml();
+    $movies = [$movie1, $movie2, $movie3];
+
+    foreach ($movies as $movie) {
+                
+        echo $movie -> getHtml();
+        echo "<br><br>";
+        
+    }
 
 ?>
