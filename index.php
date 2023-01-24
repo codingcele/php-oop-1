@@ -69,11 +69,24 @@
         public function getCast() {
 
             $actorStr = "";
-            foreach ($this -> cast as $actors) {
-                
-                $actorStr .= $actors -> getActor() . " ";
-                
+            $list = $this -> cast;
+            for ($i = 0; $i <= count($list) - 1; $i++) {
+                $actorStr .= $list[$i] -> getActor();
+                if($i < count($list) - 1) {
+                    $actorStr .= ", ";
+                }
+                else {
+                    $actorStr .= ".";
+                }
             }
+
+
+            /* foreach ($this -> cast as $actors) {
+                
+                $actorStr .= $actors -> getActor() . ", ";
+                
+            } */
+
             return $actorStr;
         }
 
