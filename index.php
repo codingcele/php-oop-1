@@ -38,6 +38,25 @@
 
     }
 
+    class Genere {
+
+        public $name;
+        public $description;
+
+        public function __construct($name, $description) {
+
+            $this -> name = $name;
+            $this -> surname = $description;
+
+        }
+
+        public function getGene() {
+
+            return $this -> name;
+        }
+
+    }
+
     class Movie {
 
         public $title;
@@ -80,13 +99,6 @@
                 }
             }
 
-
-            /* foreach ($this -> cast as $actors) {
-                
-                $actorStr .= $actors -> getActor() . ", ";
-                
-            } */
-
             return $actorStr;
         }
 
@@ -95,10 +107,11 @@
             $genereStr = "";
             foreach ($this -> genere as $gene) {
                 
-                $genereStr .= $gene . " ";
+                $genereStr .= $gene -> getGene() . " ";
                 
             }
             return $genereStr;
+
         }
 
         public function getHtml() {
@@ -133,11 +146,11 @@
     $actors2 = [$actor4, $actor5];
     $actors3 = [$actor6, $actor7, $actor8];
 
-    $genere1 = "Horror";
-    $genere2 = "Drammatico";
-    $genere3 = "Guerra";
-    $genere4 = "Comico";
-    $genere5 = "Storico";
+    $genere1 = new Genere("Horror", "Paura");
+    $genere2 = new Genere("Drammatico", "Pianto");
+    $genere3 = new Genere("Guerra", "Combattimento");
+    $genere4 = new Genere("Comico", "Ridere");
+    $genere5 = new Genere("Storico", "Storia");;
 
     $generi1 = [$genere3, $genere2, $genere5];
     $generi2 = [$genere3, $genere2];
